@@ -89,7 +89,7 @@ void loop()
     avgError += error;
     avgError /= PrevErrorCount;
   }
-  else if (abs(avgError) < 300)
+  else if ((upcomingTurn == 0) && (abs(avgError) < 500))
   {
     buzzer.playNote(NOTE_A(4), 100, 15);
     error = 0;
@@ -154,7 +154,7 @@ void loop()
   // work decently for many Zumo motor choices.  You probably
   // want to use trial and error to tune these constants for your
   // particular Zumo and line course.
-  int16_t speedDifference = error*5/8 + (error - lastError)*9/2 ;
+  int16_t speedDifference = error*4/8 + (error - lastError)*7;
   
   lastError = error;
   
